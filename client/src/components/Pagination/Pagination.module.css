@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+.container{ 
+    margin:0px 0px 25px;
+    display: flex;
+    justify-content: center;
+}
+.container li{ 
+    margin-right: 50px;
+    list-style: none;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    color: #132540;
+    position: relative;
+} 
+.container li::before{ 
+    content: ""; 
+    height: 3px;
+    width: 0%;
+    background: #d2812a;
+    position: absolute;
+    left: 0;
+    bottom: -12px;
+    transition: 0.8 ease-out;
+}
+.container li:hover::before{ 
+    width: 100%;
+}

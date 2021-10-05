@@ -1,0 +1,41 @@
+.box{
+    display: flex;
+    justify-content: center;
+    width: 98vw;
+    margin-top: -30px;
+    
+}
+.containerImg{ 
+    margin: 10px auto; 
+    border-radius: 5px;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 80%;
+    height: 40%;
+    position:relative;
+
+}
+ img{ 
+    box-shadow: 10px;
+    width: 100%;
+}
+.cardContainer{ 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 50px;
+}
+.containerDiets{ 
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.containerSearch{ 
+    display: flex;
+    margin-bottom: 50px;
+    position: absolute;
+    z-index: 1;
+    margin-left: 250px;
+    margin-top: 450px;
+    
+}

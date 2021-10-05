@@ -1,0 +1,26 @@
+.containerCard{ 
+    display: flex;
+    flex-direction: column;
+    height: 60vh;
+    width: 20vw;
+    border-radius: 5px;
+}
+.imgContainer{ 
+    display: flex;
+    
+}
+.imgContainer img{
+    border-radius: 10px;
+}
+.container{
+    display: flex;
+}
+.containerText{ 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.containerText h1{ 
+    font-size: 15px;
+    max-width: 200px;
+}

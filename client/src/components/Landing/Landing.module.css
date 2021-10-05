@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:Montserrat:ital,wght@0,300;1,200;1,400&display=swap');
+.image{ 
+    background-image: url('./landing.png');
+    height: 100vh;
+    width: 100vw;
+    background-size: cover;
+}
+.containerBtn{ 
+    height: 45vw;
+    width: 100vw;
+    display: flex;
+    flex-direction: column-reverse;
+}
+#btn{ 
+    margin-bottom: 150px;
+    margin-left: 125px;
+    width: 100px;
+    height: 30px;
+    border-style: none;
+    border-radius: 5px;
+    background-color: #d2812a;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    color: #132540;
+    
+}
+#btn:hover{ 
+    background-color: #d2825a;
+    font-size: 17px;
+}
+.link{ 
+    width: 0vw;
+    height: 30vh;
+}
