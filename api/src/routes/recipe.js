@@ -3,6 +3,8 @@ const {Recipe,Type_diets} = require('../db.js');
 const router = express.Router(); 
 router.post("/", async(req,res)=>{ 
     const {name,resume,score,health_score,steps,diets} = req.body;
+    parseInt(score);
+    parseInt(health_score)
     try{ 
         //crea la receta 
         let recipeCreated = await Recipe.create({name,resume,score,health_score,steps});  

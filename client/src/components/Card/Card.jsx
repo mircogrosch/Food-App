@@ -5,7 +5,7 @@ const Card = ({image,name,type_diets}) => {
     return(
         <div className={style.containerCard}> 
             <div className={style.imgContainer}> 
-                <img src={image?image:"./notyet"} alt="Recipe"/>
+                <img src={image?image:"./img/notyet.jpg"} alt="Recipe"/>
             </div>
             <div className={style.containerText}>
 

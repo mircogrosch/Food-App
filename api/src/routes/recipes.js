@@ -6,6 +6,13 @@ require('dotenv').config()
 const URL = ' https://api.spoonacular.com/recipes';
 
 router.get("/", async(req,res)=> { 
+
+  const addDietVegetarian= (recipe,obj)=> { 
+      if(recipe.vegetarian){ 
+          obj.type_diets.push("vegetarian")
+      }
+  }
+
     const {name} = req.query; 
       if(name) {   
         try { 
@@ -20,7 +27,7 @@ router.get("/", async(req,res)=> {
             name: el.title,
             image:el.image,
             type_diets: el.diets
-          }
+          } 
            responseApiData.push(data)
         })
             //consulto a mi db  
@@ -53,7 +60,9 @@ router.get("/", async(req,res)=> {
             name: el.title,
             image:el.image,
             type_diets: el.diets,
+            score:el.spoonacularScore,
           }
+          addDietVegetarian(el,data)
            responseApiData.push(data)
         })
         
@@ -70,6 +79,7 @@ router.get("/", async(req,res)=> {
           id:el.id,
           name:el.name,
           type_diets: el.type_diets.map(diet => diet.name),
+          socore: el.score
         }
         responseDbData.push(data)
         })
@@ -97,7 +107,7 @@ router.get('/:idReceta',async(req,res)=> {
                 image:responseApi.data.image,
                 name:responseApi.data.title,
                 dishTypes: responseApi.data.dishTypes.map(type => type),
-                diets: responseApi.data.diets.map(diet => diet),
+                type_diets: responseApi.data.diets.map(diet => diet),
                 health_score:responseApi.data.healthScore,
                 score: responseApi.data.spoonacularScore,
                 steps: responseApi.data.analyzedInstructions,

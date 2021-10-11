@@ -9,15 +9,7 @@
     border-bottom-right-radius: 80px ;
     border-top-left-radius: 80px;
     border-bottom-left-radius: 80px ;
-}
-.container{ 
-    position: relative;
-    vertical-align: middle;
-    white-space: nowrap;
-}
-.containerImg{ 
- width: 50px;
- height: 20px;
+    background-color: transparent;
 }
 .button{ 
     background-image: url('./search.png');

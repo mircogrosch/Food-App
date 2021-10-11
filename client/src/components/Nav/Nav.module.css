@@ -6,7 +6,7 @@
     height: 8vh;
     justify-content: center;
 }
-.NavContainer{ 
+.NavContainer ul{ 
     display: flex;
     margin: auto;
     padding:35px 0;
@@ -15,7 +15,7 @@
     width: 80%;
     
 }
-.NavContainer a{ 
+.NavContainer ul li{ 
     list-style: none;
     color:#132540;
     text-decoration: none;
@@ -23,7 +23,10 @@
     font-size: 20px;
     position: relative;
 }
-.NavContainer a::before{ 
+.link{ 
+    text-decoration: none;
+}
+.NavContainer ul li::before{ 
     content: ""; 
     height: 3px;
     width: 0%;
@@ -33,7 +36,7 @@
     bottom: -12px;
     transition: 0.8 ease-out;
 }
-.NavContainer a:hover::before{ 
+.NavContainer ul li:hover::before{ 
     width: 100%;
 }
 .searchBar{ 

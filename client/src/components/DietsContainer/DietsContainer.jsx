@@ -12,7 +12,6 @@ const DietsContainer = () => {
      useEffect(()=> {  
          dispatch(getDiets())
      },[dispatch])    
-    console.log(diets)
     return(
         <div className={style.container}>
             {diets && diets.map((diet,i) => {

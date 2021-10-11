@@ -3,7 +3,7 @@ const {Type_diets} = require('../db.js');
 const router = express.Router(); 
 
 router.get('/', async(req,res)=>{
-    const diets = ["gluten free","ketogenic","vegetarian","lacto vegetarian","ovo vegetarian","vegan","pescetarian","paleolithic","primal","low fodmap","whole30"];
+    const diets = ["gluten free","ketogenic","vegetarian","lacto ovo vegetarian","vegan","pescatarian","paleolithic","primal","fodmap friendly","whole 30","dairy free"];
     
     diets.forEach(diet => Type_diets.findOrCreate({where:{name:diet}}))
    

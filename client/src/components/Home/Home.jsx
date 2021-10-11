@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react'; 
 import {useSelector,useDispatch} from "react-redux";
-import { getRecipes,getDiets } from '../../actions';
+import { getRecipes} from '../../actions';
 import Card from '../Card/Card';
 import Pagination from '../Pagination/Pagination';
 import DietsContainer from '../DietsContainer/DietsContainer';
 import style from './Home.module.css'
 import SearchBar from '../SearchBar/SearchBar';
+import SelectSort from '../SelectSort/SelectSort';
 const Home = () => { 
 //Global states
-const recipe = useSelector(state=> state.filterRecipes);
+const recipe = useSelector(state=> state.currentRecipes);
 
 //Local states 
 const [currentPage, setCurrentPage]= useState(1); 
@@ -35,17 +36,13 @@ const pagination = (pageNumber) => {
      dispatch(getRecipes())   
      },[dispatch])
 
-/*updating*/
-// useEffect(()=> {    
-//     dispatch(getDiets())
-// },[recipe]) 
-
 if(recipe){ 
    
     return (
         <div> 
              <div className={style.containerSearch}>
                 <SearchBar/>
+                <SelectSort/>
             </div>
             <div className={style.box}>   
                 <div className={style.containerImg}>  
@@ -54,6 +51,7 @@ if(recipe){
             </div>
            
             <div className={style.containerDiets}> 
+                <h3>Choose your diet:</h3>
             <DietsContainer /> 
             </div>
             

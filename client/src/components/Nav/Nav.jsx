@@ -5,11 +5,11 @@ const Nav = () => {
     return(
         <div> 
             <nav className={style.NavContainer}> 
-               
-               <Link to='/recipes'> <a>Home</a></Link>
-                <Link to='/recipe'><a>Create Recipe</a></Link>
-                <Link to='/favorites'><a>Favorites</a></Link>
-               
+               <ul>  
+               <Link to='/recipes' className={style.link}> <li>Home</li></Link>
+                <Link to='/recipe' className={style.link}><li>Create Recipe</li></Link>
+                <Link to='/favorites' className={style.link}><li>Favorites</li></Link>
+                </ul>
             </nav>
             
             

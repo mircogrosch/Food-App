@@ -10,8 +10,8 @@ return (
         <ul className={style.container}> 
              {pageNumbers && 
                 pageNumbers.map(number => (
-                    <li> 
-                        <a key={number} onClick={()=> pagination(number)}> {number}</a>
+                    <li key={number}> 
+                        <span  onClick={()=> pagination(number)}> {number}</span>
                     </li>
                 ))
              
