@@ -20,7 +20,6 @@
     position: absolute;
     left: 0;
     bottom: -12px;
-    transition: 0.8 ease-out;
 }
 .container li:hover::before{ 
     width: 100%;

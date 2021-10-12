@@ -1,12 +1,14 @@
 :root{ 
     --colorTextos: #49454567;
 }
-
+.containerInput{
+    display: flex;
+    flex-direction: column;
+}
 .form{ 
     display: flex;
-    width: 50%;
-    flex-direction: column;
-    align-items: center;
+    width: 100%;
+    justify-content: space-around;
 }
 
 .grupo{
@@ -40,7 +42,7 @@ textarea:focus~label,textarea:valid~label
     color: #132540;
 }
 
-label{
+.label{
     margin-left: -122px;
     color: var(--colorTextos);
     font-size: 16px;
@@ -52,7 +54,11 @@ label{
 
 .input:focus~.barra::before,textarea:focus~.barra::before{
     margin-left: -125px;
-    width: 200%;
+    width: 206%;
+}
+.input:focus~.error::before,textarea:focus~.error::before{
+    margin-left: -125px;
+    width: 206%;
 }
 .barra{
     position: relative;
@@ -68,9 +74,58 @@ label{
     background: #132540;
     transition: 0.5 ease all;
 }
-
-
-.button{
-    background-color: transparent; 
+.error{
+    position: relative;
+    display: block;
     width: 100%;
+}
+.error::before{
+    content: "";
+    height: 2px;
+    width: 0;
+    bottom: 0;
+    position: absolute;
+    background: rgb(243, 29, 29);
+    transition: 0.5 ease all;
+}
+#errorWord{
+    color: rgb(243, 29, 29);
+}
+.containerDiet{ 
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    height: 70vh;
+}
+.containerDietMap{
+    display: flex;
+}
+.containerDietMap img{
+    width: 35px;
+    height: 35px;
+    
+}
+.containerDietMap{ 
+    padding-bottom: 10px;
+} 
+.containerDietMap label{ 
+    font-size: 12px;
+}
+
+.button input{
+    margin-top: 10px;
+    background-color: transparent; 
+    width: 60%;
+    cursor: pointer;
+    background-color: #132540;
+    color:#f6f6f6;
+    height: 30px;
+    border-radius: 80px;
+    border: solid #132540 1px;
+}
+.button input:hover{
+    transition: 0.5s ease all;
+    background-color: #132530;
+    font-size: 20px;
 }

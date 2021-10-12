@@ -14,7 +14,8 @@ const DietsContainer = () => {
      },[dispatch])    
     return(
         <div className={style.container}>
-            {diets && diets.map((diet,i) => {
+            <Diet key={"all"} name={"all"}/>
+            {diets && diets.map((diet) => {
                return <Diet  key={diet.name} name={diet.name}/>
             } )}
         </div>

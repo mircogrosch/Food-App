@@ -110,10 +110,14 @@ router.get('/:idReceta',async(req,res)=> {
                 type_diets: responseApi.data.diets.map(diet => diet),
                 health_score:responseApi.data.healthScore,
                 score: responseApi.data.spoonacularScore,
-                steps: responseApi.data.analyzedInstructions,
-                resume: responseApi.data.summary
+                steps: responseApi.data.analyzedInstructions.length>0 ?responseApi.data.analyzedInstructions [0].steps.map(e=> {
+                  return {number:e.number,
+                          step:e.step}
+                }):"No steps",
+                resume: responseApi.data.summary.replace(/<[^>]*>?/gm,''),
+                time: responseApi.data.readyInMinutes
               }
-              return res.json(apiData)
+              return res.json(apiData);  
             } catch { 
               //si no encuentra el id en la api externa lo busca en la db
               let responseDb= await Recipe.findByPk(idReceta);

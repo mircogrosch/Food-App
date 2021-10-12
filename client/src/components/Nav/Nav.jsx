@@ -8,7 +8,7 @@ const Nav = () => {
                <ul>  
                <Link to='/recipes' className={style.link}> <li>Home</li></Link>
                 <Link to='/recipe' className={style.link}><li>Create Recipe</li></Link>
-                <Link to='/favorites' className={style.link}><li>Favorites</li></Link>
+                <Link to='/favorites' className={style.link}><li>My Recipes</li></Link>
                 </ul>
             </nav>
             

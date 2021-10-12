@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital@1&display=swap");
+
+.container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 50px;
+  height: 60vh;
+}
+.portada {
+  display: flex;
+  flex-direction: column;
+  width: 33%;
+  height: 30%;
+}
+.containerName {
+  text-align: center;
+  width: 100%;
+  font-family: "Montserrat", sans-serif;
+  color: #132540;
+}
+.containerName h1 {
+  display: inline;
+}
+.containerGrupScore {
+  display: flex;
+  flex-direction: column;
+  width: 33%;
+  height: 50vh;
+}
+.portada img {
+  border-radius: 10px;
+}
+.scoreContainer {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.scoreContainer img {
+  width: 35px;
+  height: 35px;
+}
+.containerName h1 {
+  width: 200px;
+}
+
+
+.img {
+  height: 35px;
+  width: 35px;
+  padding: 10px;
+}
+.containerResume {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 5px;
+  font-family: "Montserrat", sans-serif;
+  color: #132540;
+  height: 50vh;
+}
+.containerResume h6 {
+  line-height: 25px;
+  text-align: justify;
+}
+
+/* Steps */ 
+.containerSteps{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 80px;
+
+}
+.containerIcon{ 
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    align-items:flex-start;
+}
+.containerIcon img{ 
+    width: 80px;
+    height: 80px;
+} 
+.containerIcon h4{ 
+    font-family: "Montserrat", sans-serif;
+    color: #d2812a;
+} 
+.containerTextSteps{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 50%;
+    
+
+}
+.containernNumSteps{
+    display: flex;
+    width: 100%;
+}
+.containernNumSteps h4{
+    font-family: "Montserrat", sans-serif;
+    color: #132540;
+    border-bottom: solid #d2812a;
+    margin-right: 20px;
+    
+}
+.containernNumSteps h6{
+    font-family: "Montserrat", sans-serif;
+    color: #132540;
+    text-align: left;
+} 
+
+.containerDiet {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width:20%;
+  }
+.containerDiet img{ 
+    padding-left: 0px;
+}
+  
+  .containerDietText {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    color: #132540;
+    font-family: "Montserrat", sans-serif;
+  }
+  

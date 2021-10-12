@@ -39,6 +39,9 @@
 .NavContainer ul li:hover::before{ 
     width: 100%;
 }
+.NavContainer ul li:focus::before{ 
+    width: 100%;
+}
 .searchBar{ 
     margin-top: 15px;
     margin-left: 50px;

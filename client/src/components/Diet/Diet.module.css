@@ -22,7 +22,7 @@
     bottom: -1px;
     transition: 0.8 ease-out;
 }
-.btn:hover::before{ 
+.btn:hover::before,.btn:focus::before{ 
     width: 100%;
 
 }

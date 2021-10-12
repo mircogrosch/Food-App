@@ -1,9 +1,9 @@
-import { GET_DIETS, GET_RECIPES,GET_RECIPES_BY_QUERY,FILTER_BY_DIETS,SORT_BY,GET_DETAIL } from "../actions";
+import { GET_DIETS, GET_RECIPES,GET_RECIPES_BY_QUERY,FILTER_BY_DIETS,SORT_BY,GET_DETAIL,RESET_DETAIL } from "../actions";
 const initialState = { 
     recipes:[],
     diets:[],
     currentRecipes:[],
-    recipeDetail:[]
+    recipeDetail:{}
    }; 
 
 const rootReducer = (state=initialState,action) => { 
@@ -24,11 +24,20 @@ const rootReducer = (state=initialState,action) => {
                 }
             case GET_DETAIL:
                 return { 
-                    recipeDetail:[action.payload]
+                   ...state, recipeDetail:action.payload
+                }
+            case RESET_DETAIL:
+                return{
+                    ...state,recipeDetail:{}
                 }
             case FILTER_BY_DIETS:
                 
                 let newRecipes =[]; 
+                if(action.payload === "all"){
+                    return{
+                        ...state,currentRecipes:state.recipes
+                    }
+                }
                 state.currentRecipes.forEach(diet=> {
                     if(diet.type_diets.includes(action.payload)){
                         newRecipes.push(diet)
