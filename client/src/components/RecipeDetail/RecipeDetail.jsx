@@ -1,25 +1,37 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getDetail, resetDetail } from "../../actions";
+import { getDetail, resetDetail, setLoading } from "../../actions";
 import { useParams } from "react-router-dom";
 import style from "./RecipeDetail.module.css";
+import Loading from "../Loading/Loading";
 const RecipeDetail = () => {
   //Global state
   const recipe = useSelector((state) => state.recipeDetail);
-
+  const loading = useSelector((state)=> state.loading)
   //HOOKS
   const { id } = useParams();
   const dispatch = useDispatch();
   /*mounting*/
   useEffect(() => {
     dispatch(getDetail(id));
-  }, [dispatch, id]);
-
+  }, []);
+  
+  useEffect(()=>{
+    !recipe ? dispatch(setLoading(true)):dispatch(setLoading(false))
+  },[recipe])
+  
   /*unmounting */
   useEffect(() => {
+    dispatch(setLoading(true))
     return dispatch(resetDetail());
-  }, []);
+  },[]);
 
+
+
+
+  if(loading) {   
+      return (<Loading/>)
+   }else {  
   return (
     <div>
       <div className={style.container}>
@@ -69,7 +81,7 @@ const RecipeDetail = () => {
       <div className={style.containerSteps}>
         <div className={style.containerTextSteps}>
           <div className={style.containerIcon}>
-            <img src={process.env.PUBLIC_URL + `/img/icons_detail/chef.png`} />
+            <img src={process.env.PUBLIC_URL + `/img/icons_detail/chef.png`} alt="Diet"/>
             <h4>Cook this meal</h4>
           </div>
 
@@ -89,6 +101,7 @@ const RecipeDetail = () => {
           <div className={style.containerIcon}>
             <img
               src={process.env.PUBLIC_URL + `/img/icons_detail/typediet.png`}
+              alt="Diet"
             />
             <h4>Types Diets</h4>
           </div>
@@ -109,5 +122,5 @@ const RecipeDetail = () => {
     </div>
   );
 };
-
+}
 export default RecipeDetail;

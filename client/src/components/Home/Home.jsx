@@ -1,21 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getRecipes } from "../../actions";
+import { getRecipes, setLoading } from "../../actions";
 import Card from "../Card/Card";
 import Pagination from "../Pagination/Pagination";
 import DietsContainer from "../DietsContainer/DietsContainer";
 import style from "./Home.module.css";
 import SearchBar from "../SearchBar/SearchBar";
 import SelectSort from "../SelectSort/SelectSort";
+import Loading from "../Loading/Loading";
 const Home = () => {
   //Global states
   const recipe = useSelector((state) => state.currentRecipes);
+  const loading = useSelector((state)=> state.loading)
 
   //Local states
   const [currentPage, setCurrentPage] = useState(1);
   const foodPerPage = 9;
 
-  //variables
+  //variables 
   const indexOfLastFood = currentPage * foodPerPage;
   const indexOfFirstFood = indexOfLastFood - foodPerPage;
   const currentFood = recipe.slice(indexOfFirstFood, indexOfLastFood);
@@ -29,11 +31,22 @@ const Home = () => {
   const dispatch = useDispatch();
 
   /*mounting*/
-  useEffect(() => {
-    dispatch(getRecipes());
-  }, [dispatch]);
+  useEffect(() => { 
+    dispatch(getRecipes()); 
+  },[]);
 
-  if (recipe) {
+  /*unmounting*/
+  useEffect(()=>{
+    return recipe.length ? dispatch(setLoading(false)) : dispatch(setLoading(true))
+  },[recipe])
+
+
+  if (loading) {
+    return (
+      <Loading />
+    )
+      
+  } else {
     return (
       <div>
         <div className={style.containerSearch}>
@@ -47,12 +60,12 @@ const Home = () => {
         </div>
 
         <div className={style.containerDiets}>
-          <h3>Choose your diet:</h3>
+  
           <DietsContainer />
         </div>
 
         <div className={style.cardContainer}>
-          {currentFood.map((recipe) => {
+         { Array.isArray(currentFood)? currentFood.map((recipe) => {
             return (
               <Card
                 key={recipe.id}
@@ -62,7 +75,7 @@ const Home = () => {
                 id={recipe.id}
               />
             );
-          })}
+          }): alert(recipe) } 
         </div>
         <Pagination
           pagination={pagination}
@@ -71,8 +84,6 @@ const Home = () => {
         />
       </div>
     );
-  } else {
-    return <div>Loading...</div>;
   }
 };
 

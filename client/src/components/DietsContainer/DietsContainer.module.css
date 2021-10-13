@@ -2,26 +2,4 @@
     display: flex;
     justify-content: center;
 }
-.btn{ 
-    width: 50px;
-    height: 50px;
-    border: none;
-    cursor: pointer;
-    background: none;
-    margin-right:40px;
-    position: relative;
-}
 
-.btn:hover::before,.btn:focus::before{ 
-    width: 100%;
-}
-.btn::before{ 
-    content: ""; 
-    height: 3px;
-    width: 0%;
-    background: #d2812a;
-    position: absolute;
-    left: 0;
-    bottom: -1px;
-    transition: 0.8 ease-out;
-}

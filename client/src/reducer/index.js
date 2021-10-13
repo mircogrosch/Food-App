@@ -1,9 +1,10 @@
-import { GET_DIETS, GET_RECIPES,GET_RECIPES_BY_QUERY,FILTER_BY_DIETS,SORT_BY,GET_DETAIL,RESET_DETAIL } from "../actions";
+import { GET_DIETS, GET_RECIPES,GET_RECIPES_BY_QUERY,FILTER_BY_DIETS,SORT_BY,GET_DETAIL,RESET_DETAIL, SET_LOADING } from "../actions";
 const initialState = { 
     recipes:[],
     diets:[],
     currentRecipes:[],
-    recipeDetail:{}
+    recipeDetail:{},
+    loading : true,
    }; 
 
 const rootReducer = (state=initialState,action) => { 
@@ -15,9 +16,15 @@ const rootReducer = (state=initialState,action) => {
                currentRecipes:action.payload
             }
             case GET_RECIPES_BY_QUERY:
-                return { 
-                   ...state, currentRecipes:action.payload
+                if(!action.payload.length){ 
+                    return {
+                        ...state, currentRecipes:"SORRY WE CAN'T FOUND RESULTS "}
+                }else{ 
+                    return { 
+                        ...state, currentRecipes:action.payload
+                     }
                 }
+                
             case GET_DIETS: 
                 return { 
                    ...state, diets:action.payload
@@ -60,6 +67,12 @@ const rootReducer = (state=initialState,action) => {
                 return{ 
                     ...state, currentRecipes:sorted
                 }
+            case SET_LOADING: 
+                    return {
+                        ...state,loading:action.payload
+                    }
+            
+
         default: return state;
         }
 }

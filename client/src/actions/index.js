@@ -5,7 +5,8 @@ GET_DIETS='GET_DIETS',
 FILTER_BY_DIETS='FILTER_BY_DIETS',
 SORT_BY="SORT_BY",
 GET_DETAIL="GET_DETAIL",
-RESET_DETAIL="RESET_DETAIL";
+RESET_DETAIL="RESET_DETAIL",
+SET_LOADING= "SET_LOADING";
 
 export const getRecipes=()=>{ 
     return async function(dispatch){ 
@@ -47,5 +48,10 @@ export const sortBy=(optionSort)=>{
 export const resetDetail=()=>{
     return {
         type:RESET_DETAIL
+    }
+}
+export const setLoading= (boolean)=>{ 
+    return{ 
+        type:SET_LOADING,payload:boolean
     }
 }

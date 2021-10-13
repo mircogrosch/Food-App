@@ -33,13 +33,13 @@
     background: #d2812a;
     position: absolute;
     left: 0;
-    bottom: -12px;
+    bottom: -8px;
     transition: 0.8 ease-out;
 }
 .NavContainer ul li:hover::before{ 
     width: 100%;
 }
-.NavContainer ul li:focus::before{ 
+.NavContainer~ul~li:focus::before{ 
     width: 100%;
 }
 .searchBar{ 
@@ -47,4 +47,11 @@
     margin-left: 50px;
     display: flex;
     justify-content: flex-end;
+}
+ .active{
+    border: 3px #d2812a solid;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    padding-bottom: 5px;
 }

@@ -1,28 +1,54 @@
-.btn{ 
-    width: 50px;
-    height: 50px;
-    border: none;
-    cursor: pointer;
-    background: none;
-    margin-right:40px;
-    position: relative;
+.btn {
+  width: 50px;
+  height: 50px;
+  border: none;
+  cursor: pointer;
+  background: none;
+  margin-right: 40px;
+  position: relative;
+}
+.btn .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #d2812a;
+  color: #e7e7e7;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  border-radius: 6px;
+  padding: 1px 0;
+  position: absolute;
+  z-index: 1;
+  width: 120px;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -60px;
+  margin-bottom: 10px;
+}
+.tooltiptext::after {
+  content: " ";
+  position: absolute;
+  top: 100%; /* At the bottom of the tooltip */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #d2812a transparent transparent transparent;
 }
 
-.text{
-    visibility: hidden;
+.btn::before {
+  content: "";
+  height: 3px;
+  width: 0%;
+  background: #d2812a;
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  transition: 0.8 ease-out;
 }
-
-.btn::before{ 
-    content: ""; 
-    height: 3px;
-    width: 0%;
-    background: #d2812a;
-    position: absolute;
-    left: 0;
-    bottom: -1px;
-    transition: 0.8 ease-out;
+.btn:hover::before,
+.btn:focus::before {
+  width: 100%;
 }
-.btn:hover::before,.btn:focus::before{ 
-    width: 100%;
-
+.btn img:hover ~ .tooltiptext {
+  visibility: visible;
 }
