@@ -53,6 +53,7 @@
 .containerText h1{ 
     font-size: 15px;
     max-width: 200px;
+    max-height: 50px;
 }
 .containerDesc{ 
     width: 100%;

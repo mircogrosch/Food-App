@@ -13,7 +13,7 @@ const Nav = () => {
           <NavLink to="/recipe" className={style.link} activeClassName={style.active}>
             <li>Create Recipe</li>
           </NavLink>
-          <NavLink to="/favorites" className={style.link} activeClassName={style.active}>
+          <NavLink to="/myRecipes" className={style.link} activeClassName={style.active}>
             <li>My Recipes</li>
           </NavLink>
         </ul>

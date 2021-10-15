@@ -8,6 +8,7 @@ import style from "./Home.module.css";
 import SearchBar from "../SearchBar/SearchBar";
 import SelectSort from "../SelectSort/SelectSort";
 import Loading from "../Loading/Loading";
+import Nav from "../Nav/Nav";
 const Home = () => {
   //Global states
   const recipe = useSelector((state) => state.currentRecipes);
@@ -33,23 +34,23 @@ const Home = () => {
   /*mounting*/
   useEffect(() => { 
     dispatch(getRecipes()); 
-  },[]);
+  },[dispatch]);
 
   /*unmounting*/
   useEffect(()=>{
     return recipe.length ? dispatch(setLoading(false)) : dispatch(setLoading(true))
-  },[recipe])
+  },[recipe,dispatch])
 
 
-  if (loading) {
+ 
     return (
-      <Loading />
-    )
-      
-  } else {
-    return (
+     
       <div>
-        <div className={style.containerSearch}>
+         <Nav />
+        {      
+          (loading) ? <Loading />
+          : <div>   
+          <div className={style.containerSearch}>
           <SearchBar />
           <SelectSort />
         </div>
@@ -75,16 +76,21 @@ const Home = () => {
                 id={recipe.id}
               />
             );
-          }): alert(recipe) } 
+          }): (<img id={style.imgError}src={process.env.PUBLIC_URL + `/img/not_found1.png`} alt="Error"/>) } 
         </div>
         <Pagination
           pagination={pagination}
           allRecipe={recipe.length}
           foodPerPage={foodPerPage}
         />
-      </div>
+     
+        
+     </div> 
+        
+        }
+
+</div>
     );
   }
-};
 
 export default Home;

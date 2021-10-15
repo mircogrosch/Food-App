@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+
+/* Cuando no hay recetas */
+.containerNoRecipes{ 
+    display: flex;
+    justify-content: center;
+    width: 100%;
+} 
+.containerNoRecipes img{
+    width: 900px;
+    height: 250px;
+} 
+.containerBtnMake{
+    margin-top: 100px;
+    width: 100%;
+} 
+.containerBtnMake button { 
+    width: 50%;
+    height: 5vh;
+    background-color: #132540;
+    color: #e7e7e7;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    cursor: pointer;
+    border-top-right-radius: 80px;
+    border-bottom-right-radius: 80px ;
+    border-top-left-radius: 80px;
+    border-bottom-left-radius: 80px ;
+    border: none;
+}
+.containerBtnMake button:hover{
+    background-color: #243144;
+    transition: 0.3s ease all;
+    font-size: 20px;
+    color: #e7e7e7;
+} 
+
+/* Cuando hay recetas */
+.containerCard{ 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    column-gap: 50px;
+    height: 100vh;
+}

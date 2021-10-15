@@ -12,6 +12,7 @@
   width: 33%;
   height: 30%;
 }
+
 .containerName {
   text-align: center;
   width: 100%;
@@ -29,6 +30,8 @@
 }
 .portada img {
   border-radius: 10px;
+  width: 445.83px;
+  height: 296.67px;
 }
 .scoreContainer {
   margin-top: 10px;

@@ -25,7 +25,10 @@
     flex-wrap: wrap;
     justify-content: center;
     column-gap: 50px;
-}
+} .cardContainer #imgError{
+    width: 80%;
+    margin-bottom: 80px;
+} 
 .containerDiets{ 
     margin-top: 50px;
     margin-bottom: 50px;

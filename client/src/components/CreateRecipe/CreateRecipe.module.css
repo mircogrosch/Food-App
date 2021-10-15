@@ -95,8 +95,8 @@ textarea:focus~label,textarea:valid~label
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    justify-content: flex-end;
-    height: 70vh;
+    justify-content: flex-start;
+    height: 120vh;
 }
 .containerDietMap{
     display: flex;
@@ -106,15 +106,39 @@ textarea:focus~label,textarea:valid~label
     height: 35px;
     
 }
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital@1&display=swap");
+
 .containerDietMap{ 
     padding-bottom: 10px;
 } 
 .containerDietMap label{ 
     font-size: 12px;
+    margin-top: 5px;
+    margin-left: 8px;
+    color: #132540;
+}
+.containerIconDiet{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 20vh;
+    margin-top: 40px;
+}
+.containerIconDiet span{ 
+    margin-top: 8px;
+    color:#d2812a;
+    font-family: "Montserrat", sans-serif;
+
+}
+.containerIconDiet img{ 
+    height: 60px;
+    width: 60px;
 }
 
 .button input{
-    margin-top: 10px;
+    margin-top: 25px;
+    margin-bottom: 50px;
     background-color: transparent; 
     width: 60%;
     cursor: pointer;

@@ -6,7 +6,7 @@ const Card = ({ id, image, name, type_diets }) => {
   return (
     <div className={style.containerCard}>
       <div className={style.imgContainer}>
-        <img src={image ? image : "./img/notyet.jpg"} alt="Recipe" />
+        <img src={image ? image : "./img/myrecipe.png"} alt="Recipe" />
       </div>
       <div className={style.containerText}>
         <div className={style.container}>
@@ -14,7 +14,7 @@ const Card = ({ id, image, name, type_diets }) => {
         </div>
         <div className={style.containerDiet}>
           {type_diets.map((diet) => (
-            <h6>{diet.toUpperCase()} |</h6>
+            <h6 key={diet}>{diet.toUpperCase()} |</h6>
           ))}
         </div>
       </div>

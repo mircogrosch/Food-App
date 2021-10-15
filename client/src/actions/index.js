@@ -6,32 +6,43 @@ FILTER_BY_DIETS='FILTER_BY_DIETS',
 SORT_BY="SORT_BY",
 GET_DETAIL="GET_DETAIL",
 RESET_DETAIL="RESET_DETAIL",
-SET_LOADING= "SET_LOADING";
+SET_LOADING= "SET_LOADING",
+SAVE_MY_RECIPE="SAVE_MY_RECIPE";
+const URL = `http://localhost:3001`;
 
 export const getRecipes=()=>{ 
     return async function(dispatch){ 
-        const response = await axios.get('http://localhost:3001/recipes');
+        const response = await axios.get(`${URL}/recipes`);
         dispatch({type:GET_RECIPES,payload:response.data})
     }
 }
 export const getRecipesByQuery=(wordSearch)=>{ 
     return async function(dispatch){ 
-        const response = await axios.get(`http://localhost:3001/recipes?name=${wordSearch}`)
+        const response = await axios.get(`${URL}/recipes?name=${wordSearch}`)
         dispatch({type:GET_RECIPES_BY_QUERY,payload:response.data})
     }
 }
 
 export const getDiets=()=> { 
     return async function(dispatch){ 
-        const response = await axios.get('http://localhost:3001/types');
+        const response = await axios.get(`${URL}/types`);
         dispatch({type:GET_DIETS, payload:response.data})
     }
 } 
 export const getDetail=(id)=>{
     return async function(dispatch){ 
-        const response= await axios.get(`http://localhost:3001/recipes/${id}`);
+        const response= await axios.get(`${URL}/recipes/${id}`);
         dispatch({type:GET_DETAIL,payload:response.data});
     }
+}
+export const saveMyRecipe = (newDiet)=>{ 
+    return async function(dispatch) {
+        const response = await axios.post("http://localhost:3001/recipe", newDiet);
+        newDiet.id=response.data.id
+        dispatch({type:SAVE_MY_RECIPE, payload:newDiet})
+        alert(response.data.message);
+    }
+    
 }
 export const filterByDiets= (diet)=>{ 
     return {

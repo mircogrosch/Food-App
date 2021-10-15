@@ -16,6 +16,7 @@ const SearchBar = () => {
     }
     const handleSubmit = (input,e)=>{
         e.preventDefault() 
+        e.target.value= "";
         dispatch(getRecipesByQuery(input))
     }
     return (

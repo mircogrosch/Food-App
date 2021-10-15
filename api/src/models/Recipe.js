@@ -26,6 +26,12 @@ module.exports = (sequelize) => {
     },
     steps: { 
       type: DataTypes.TEXT
+    },
+    time: { 
+      type: DataTypes.DOUBLE
+    },
+    image:{ 
+      type: DataTypes.STRING
     }
   }, {timestamps:false});
 };

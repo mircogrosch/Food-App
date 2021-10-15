@@ -4,6 +4,7 @@ import { getDetail, resetDetail, setLoading } from "../../actions";
 import { useParams } from "react-router-dom";
 import style from "./RecipeDetail.module.css";
 import Loading from "../Loading/Loading";
+import Nav from "../Nav/Nav";
 const RecipeDetail = () => {
   //Global state
   const recipe = useSelector((state) => state.recipeDetail);
@@ -11,13 +12,14 @@ const RecipeDetail = () => {
   //HOOKS
   const { id } = useParams();
   const dispatch = useDispatch();
+
   /*mounting*/
   useEffect(() => {
     dispatch(getDetail(id));
   }, []);
   
   useEffect(()=>{
-    !recipe ? dispatch(setLoading(true)):dispatch(setLoading(false))
+      recipe? dispatch(setLoading(false)):dispatch(setLoading(true))
   },[recipe])
   
   /*unmounting */
@@ -25,16 +27,14 @@ const RecipeDetail = () => {
     dispatch(setLoading(true))
     return dispatch(resetDetail());
   },[]);
-
-
-
-
-  if(loading) {   
-      return (<Loading/>)
-   }else {  
+ 
   return (
     <div>
-      <div className={style.container}>
+      <Nav />
+      {
+        loading ? <Loading /> 
+        : <div> 
+             <div className={style.container}>
         <div className={style.portada}>
           <img src={recipe.image} alt="Recipe" />
 
@@ -88,8 +88,8 @@ const RecipeDetail = () => {
           {Array.isArray(recipe.steps) ? (
             recipe.steps.map((step) => (
               <div className={style.containernNumSteps}>
-                <h4>{step.number}</h4>
-                <h6>{step.step}</h6>
+                <h4 key={step.number}>{step.number}</h4>
+                <h6 key={step.step}>{step.step}</h6>
               </div>
             ))
           ) : (
@@ -105,22 +105,26 @@ const RecipeDetail = () => {
             />
             <h4>Types Diets</h4>
           </div>
-          {recipe.type_diets?.map((diet) => {
+          {recipe.type_diets?.map((diet,i) => {
             return (
               <div className={style.containerDietText}>
-                <img
+                <img key={diet}
                   src={process.env.PUBLIC_URL + `/img/icons/${diet}.png`}
                   alt="Diet"
                   className={style.img}
                 />
-                <h6>{diet}</h6>
+                <h6 key={i}>{diet}</h6>
               </div>
             );
           })}
         </div>
       </div>
     </div>
+        
+      }
+   </div>
+     
   );
-};
+
 }
 export default RecipeDetail;

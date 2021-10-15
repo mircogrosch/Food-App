@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
 import style from "./CreateRecipe.module.css";
-
+import Nav from "../Nav/Nav";
+import { saveMyRecipe } from "../../actions";
 const CreateRecipe = () => {
   //global states
   const diets = useSelector((state) => state.diets);
@@ -15,6 +15,8 @@ const CreateRecipe = () => {
     health_score: "",
     steps: "",
     diets: [],
+    image:`${process.env.PUBLIC_URL}img/myrecipe.png`,
+    time:""
   });
   const [errors, setErrors] = useState({});
 
@@ -38,23 +40,35 @@ const CreateRecipe = () => {
           error.health_score = "The health score must be from 0 to 100";
         }
         break;
+      case "time":
+        parseInt(input.time)
+        if(input.time < 0){
+           error.time = "The time shouldn't be negative number"
+        }
+        break;
+      case "image":
+        if(!/^(ftp|http|https):\/\/[^ "]+$/.test(input.image)){
+          error.image = "It must be a correct URL"
+        }
+        break;
       default:
         return "";
     }
     return error;
   };
+//HOOKS 
+const dispatch = useDispatch();
 
   const handleInput = (e) => {
     setInput({
       ...input,
       [e.target.name]: e.target.value,
     });
-    setErrors(validate({ ...input }, e));
+    setErrors(validate({ ...input, [e.target.name]:e.target.value }, e));
   };
-  const handleSubmit = async (newDiet, e) => {
+  const handleSubmit = (newDiet, e) => {
     e.preventDefault();
-    const response = await axios.post("http://localhost:3001/recipe", newDiet);
-    alert(response.data);
+    dispatch(saveMyRecipe(newDiet))
   };
   const handleCheckBox = (e) => {
     setInput({
@@ -63,7 +77,9 @@ const CreateRecipe = () => {
     });
   };
 
-  return (
+  return ( 
+    <div>    
+      <Nav/>
     <form onSubmit={(e) => handleSubmit(input, e)}>
       <div className={style.form}>
         <div className={style.containerInput}>
@@ -81,13 +97,13 @@ const CreateRecipe = () => {
           </div>
 
           <div className={style.grupo}>
-            <input
-              type="text"
+            <textarea
               name="resume"
+              rows="3"
               required
               className={style.input}
               onChange={(e) => handleInput(e)}
-            />
+            ></textarea>
             <span className={style.barra}></span>
             <label className={style.label}>Resume</label>
           </div>
@@ -133,9 +149,44 @@ const CreateRecipe = () => {
             )}
             <label className={style.label}>Health Score</label>
           </div>
+          
+          <div className={style.grupo}>
+            <input
+              type="number"
+              name="time"
+              className={style.input}
+              onChange={(e) => handleInput(e)}
+              required
+            />
+            <span
+              className={errors.time ? style.error : style.barra}
+            ></span>
+            {errors.time && (
+              <h6 id={style.errorWord}>{errors.time}</h6>
+            )}
+            <label className={style.label}>Time Cook</label>
+          </div>
+
+          <div className={style.grupo}>
+            <input
+              type="text"
+              name="image"
+              className={style.input}
+              onChange={(e) => handleInput(e)}
+            />
+            <span className={errors.image ? style.error : style.barra}></span>
+            {errors.image && <h6 id={style.errorWord}>{errors.image}</h6>}
+            <label className={style.label}>Url Image</label>
+          </div>
+
+
         </div>
 
         <div className={style.containerDiet}>
+          <div className={style.containerIconDiet}> 
+              <img src={process.env.PUBLIC_URL + `/img/icons_detail/typediet.png`} alt="type diets"/>
+              <span>Choose Diet</span>
+          </div>  
           {diets.map((diet) => {
             return (
               <div className={style.containerDietMap}>
@@ -149,7 +200,7 @@ const CreateRecipe = () => {
                   src={process.env.PUBLIC_URL + `/img/icons/${diet.name}.png`}
                   alt="Diet"
                 />
-                <label>{diet.name}</label>
+                <label>{diet.name.toUpperCase()}</label>
               </div>
             );
           })}
@@ -159,6 +210,7 @@ const CreateRecipe = () => {
         <input type="submit" value="Create Recipe" />
       </div>
     </form>
+    </div>
   );
 };
 

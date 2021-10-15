@@ -1,10 +1,11 @@
-import { GET_DIETS, GET_RECIPES,GET_RECIPES_BY_QUERY,FILTER_BY_DIETS,SORT_BY,GET_DETAIL,RESET_DETAIL, SET_LOADING } from "../actions";
+import { GET_DIETS, GET_RECIPES,GET_RECIPES_BY_QUERY,FILTER_BY_DIETS,SORT_BY,GET_DETAIL,RESET_DETAIL, SET_LOADING,SAVE_MY_RECIPE } from "../actions";
 const initialState = { 
     recipes:[],
     diets:[],
     currentRecipes:[],
     recipeDetail:{},
     loading : true,
+    myRecipes:[]
    }; 
 
 const rootReducer = (state=initialState,action) => { 
@@ -32,6 +33,10 @@ const rootReducer = (state=initialState,action) => {
             case GET_DETAIL:
                 return { 
                    ...state, recipeDetail:action.payload
+                }
+            case SAVE_MY_RECIPE:
+                return { 
+                    ...state, myRecipes:[...state.myRecipes,action.payload]
                 }
             case RESET_DETAIL:
                 return{
