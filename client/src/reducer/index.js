@@ -43,14 +43,13 @@ const rootReducer = (state=initialState,action) => {
                     ...state,recipeDetail:{}
                 }
             case FILTER_BY_DIETS:
-                
                 let newRecipes =[]; 
                 if(action.payload === "all"){
                     return{
                         ...state,currentRecipes:state.recipes
                     }
                 }
-                state.currentRecipes.forEach(diet=> {
+                state.recipes.forEach(diet=> {
                     if(diet.type_diets.includes(action.payload)){
                         newRecipes.push(diet)
                     }
@@ -68,7 +67,7 @@ const rootReducer = (state=initialState,action) => {
                     "100-0":function(a,b){return b.score - a.score},
                 } 
                 sorted.sort((a,b)=>optionSort[action.payload](a,b))
-                console.log(sorted);
+                
                 return{ 
                     ...state, currentRecipes:sorted
                 }

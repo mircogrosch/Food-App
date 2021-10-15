@@ -8,6 +8,7 @@ const CreateRecipe = () => {
   const diets = useSelector((state) => state.diets);
 
   //local states
+  const [errors, setErrors] = useState({});
   const [input, setInput] = useState({
     name: "",
     resume: "",
@@ -16,9 +17,9 @@ const CreateRecipe = () => {
     steps: "",
     diets: [],
     image:`${process.env.PUBLIC_URL}img/myrecipe.png`,
-    time:""
+    time:"",
   });
-  const [errors, setErrors] = useState({});
+ 
 
   //methods
   const validate = (input, e) => {
@@ -76,7 +77,9 @@ const dispatch = useDispatch();
       diets: [...input.diets, e.target.id],
     });
   };
-
+  const isDisabled = (errors)=>{
+    return Object.keys(errors).length > 0
+  }
   return ( 
     <div>    
       <Nav/>
@@ -207,7 +210,7 @@ const dispatch = useDispatch();
         </div>
       </div>
       <div className={style.button}>
-        <input type="submit" value="Create Recipe" />
+        <input type="submit" disabled={isDisabled(errors)} value="Create Recipe" />
       </div>
     </form>
     </div>

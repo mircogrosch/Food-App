@@ -22,9 +22,9 @@ const MyRecipes = () => {
         </div>
         
       ) : ( 
-
-        myRecipes.map((recipe) => (
         <div className={style.containerCard}>    
+        {myRecipes.map((recipe) => (
+        <div>    
           <Card
             id={recipe.id}
             name={recipe.name}
@@ -32,9 +32,9 @@ const MyRecipes = () => {
             image={recipe.image}
           />
         </div>
-        ))
+        ))}
         
-       
+        </div>
       )}
     </div>
   );

@@ -37,10 +37,11 @@
 
 /* Cuando hay recetas */
 .containerCard{ 
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    column-gap: 50px;
+    column-gap: 80px;
     height: 100vh;
 }
