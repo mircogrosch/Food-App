@@ -44,4 +44,20 @@ __IMPORTANTE__: Para poder utilizar esta API externa es necesario crearse una cu
 - [ ] Redux
 - [ ] Express
 - [ ] Sequelize - Postgres
+# Imagenes 
 
+<p align="center">
+  <img height="400" src="./landing.png" />
+</p>
+<p align="center">
+  <img height="400" src="./home.jpeg" />
+</p>
+<p align="center">
+  <img height="400" src="./cards.jpeg" />
+</p>
+<p align="center">
+  <img height="400" src="./detail.jpeg" />
+</p>
+<p align="center">
+  <img height="400" src="./form.jpeg" />
+</p>
