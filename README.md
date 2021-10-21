@@ -47,17 +47,17 @@ __IMPORTANTE__: Para poder utilizar esta API externa es necesario crearse una cu
 # Imagenes 
 
 <p align="center">
-  <img height="400" src="./landing.png" />
+  <img height="300" src="./landing.png" />
 </p>
 <p align="center">
-  <img height="400" src="./home.jpeg" />
+  <img height="300" src="./home.jpeg" />
 </p>
 <p align="center">
-  <img height="400" src="./cards.jpeg" />
+  <img height="300" src="./cards.jpeg" />
 </p>
 <p align="center">
-  <img height="400" src="./detail.jpeg" />
+  <img height="300" src="./detail.jpeg" />
 </p>
 <p align="center">
-  <img height="400" src="./form.jpeg" />
+  <img height="300" src="./form.jpeg" />
 </p>
