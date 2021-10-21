@@ -44,6 +44,7 @@ __IMPORTANTE__: Para poder utilizar esta API externa es necesario crearse una cu
 - [ ] Redux
 - [ ] Express
 - [ ] Sequelize - Postgres
+- [ ] CSS3 sin ninguna libreria externa
 # Imagenes 
 
 <p align="center">
